@@ -1,0 +1,103 @@
+  
+ /***class and ID selectors for various parts of the page*/
+
+ /**header**/
+ #mainpiece{
+    font-family: "Cambria";
+    font-size: 36px;
+    color: #AE2F60;
+    float:left;
+  margin-top: 0;
+   }
+
+   /**navigation Menu**/
+  .navbar{
+    float: right;
+    display: sticky;
+  }
+  .navbar li{
+    list-style-type: none;
+    display:  inline-block;
+    
+    overflow: hidden; 
+    padding: 0.75em;
+  }
+
+.navbar li a {
+  text-decoration:none;
+  color: lightgray;
+  font-family: "Calibri";
+    font-style: bold;
+    font-size: 20px;
+}
+.navbar li a:hover{
+  color: #AE2F60;
+}
+
+  .selected{
+  text-decoration: none;
+  background-color: #AE2F60;
+  border-radius: 1em;
+}
+
+/**image**/
+.icon{
+  display: flex;
+  margin: auto;
+ align-content:  center;
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+.icon:hover{
+  transition: 0.50s;
+  transform: rotate(360deg);
+}
+
+/**Search form**/
+.form{
+  display: flex;
+} 
+#foodRequest{
+  margin-left: 25%;
+ margin-right: 25%;
+ width: 50%;
+}
+  #foodRequest,
+#foodRequest input[type = "text"]{
+  position: absolute;
+      border-radius: 8px;
+    border-style: none;
+      box-sizing: border-box;
+      padding: 6px;
+  display: block;
+     font-family: "Calibri";
+    font-size: 16px;  background-color: #eeeeee;
+  
+}  
+#foodRequest input[type = "text"]{
+   padding: 10px;
+  text-align : left;
+  width: 93%;
+   }
+button{
+  background-color: #eeeeee;
+  border: none;
+  display: inline;
+  border-radius: 8px;
+ box-sizing: border-box;
+   margin-left: 94%;
+  margin-right: 0;
+}
+.material-icons.md-16{
+  font-size: 24px;
+  padding-top: 8px;
+ color: grey;
+ 
+}
+
+/***elements of page**/
+p{
+  font-family: Calibri, Helvetica, Arial;
+  font-size: 16px;
+}
