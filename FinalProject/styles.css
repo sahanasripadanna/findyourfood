@@ -96,8 +96,11 @@ button{
  
 }
 
-/***elements of page**/
-p{
+/***about page**/
+
+#aboutText{
   font-family: Calibri, Helvetica, Arial;
   font-size: 16px;
+  margin: 0 25%;
+  color: grey;
 }
