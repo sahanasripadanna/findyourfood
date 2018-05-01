@@ -3,21 +3,23 @@ function searched(){
   var searchedWord = document.getElementById("searchTerm").value;
   alert(searchedWord);
  
-    // create a new div element 
-    var newDiv = document.createElement("div"); 
-    // and give it some content 
+    // create a new element 
+    var newElement = document.createElement("div"); 
+    // give it content 
     var newContent = document.createTextNode("You searched'" + searchedWord+"'"); 
-    // add the text node to the newly created div
+    // add the text node to the new element
     newDiv.appendChild(newContent);  
-  
-    // add the newly created element and its content into the DOM 
-    var currentDiv = document.getElementById("wrap"); 
-    document.body.insertBefore(newDiv, currentDiv); 
-  
- // document.write('You searched for "' + searchedWord + '"');
+    // add the new element into the dom by linking to a prior non
+    var priorSection = document.getElementById("wrap"); 
+    document.body.insertBefore(newDiv, priorSection); 
 }
 
-
+/**EXPLANATION OF WHAT I DID HERE
+ * 1) HTML CALLS THE JAVASCRIPT WHEN THE BUTTON IS CLICKED
+ * (THE USUAL PROBELM WAS THAT MY FORM WOULD SUBMIT AND REFRESH SO WE RETURN FALSE IN THE HTML)
+ * 2) WE GET THE VAUE FROM THE ELEMENT NODE(JUST LIKE LINKED LIST)
+ * 3) WE ADD A NEW NODE(LINKED LIST)USING A REFERENCE TO PRIOR
+ */
 
 
 
