@@ -3,12 +3,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Find Your Food</title>
   <link rel="stylesheet" href="styles.css">
- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-</head>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  
+</head>
 <body>
   
   <header>
@@ -22,17 +22,16 @@
     </ul>
    </nav>
       <img src = "download.png" alt = "food clipArt" class = "icon">
+      
 
-<section class = "pageBody">
-  <div class = "form">
-<form>
- <div id = "foodRequest" >
-  <input type="text" name = "originalFood" placeholder = "Search for your food">
-  
-<button type = "submit"><span class="material-icons md-16">search</span></button>
-   </div>
-</form>
-    </div>
-  </section> 
+  <section class="wrap">
+    <form id="search" name = "searchBar">
+       <input type="text" id="searchTerm" placeholder="Search for your food">
+       <button type="submit" id="searchButton" onclick = "searched()"><i class="fa fa-search"></i>
+      </button>
+    </form>
+  </section>
+ 
+  <script src="scripts.js"></script> 
 </body>
 </html>
