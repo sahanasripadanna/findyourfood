@@ -1,8 +1,8 @@
-
+//function called if button is clicked
 function searched(){
   var searchedWord = document.getElementById("searchTerm").value;
+  newElement("div", "You searched for '" + searchedWord +"'", "wrap");
   alert(searchedWord);
-   newElement("div", "You searched for '" + searchedWord +"'", "wrap");
     let request = new XMLHttpRequest();
     let url = "https://api.nal.usda.gov/ndb/search/?format=json";
     url+=("&q="+searchedWord);
@@ -10,6 +10,7 @@ function searched(){
     var searchArea = document.getElementById("results");
     searchArea.innerHTML = "";
     request.onreadystatechange = function() {
+      
       if (this.readyState === 4 && this.status === 200) {
         let response = JSON.parse(this.responseText);
         for(var i = 0; i < response.list.item.length; i++){
@@ -37,4 +38,3 @@ newElement = function(element, elText, prior){
  * 2) WE GET THE VAUE FROM THE ELEMENT NODE(JUST LIKE LINKED LIST)
  * 3) WE ADD A NEW NODE(LINKED LIST)USING A REFERENCE TO PRIOR
  */
-
