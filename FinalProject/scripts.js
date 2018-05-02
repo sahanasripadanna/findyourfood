@@ -8,11 +8,14 @@ function searched(){
     let url = "https://api.nal.usda.gov/ndb/search/?format=json";
     url+=("&q="+searchedWord);
     url+=("&sort=n&fg=Fast+Foods&api_key=FWaQH04Azwkd2GABmQTRrox5VMNSkhJrHfYpgxMG");
+    var searchArea = document.getElementById("results");
+    searchArea.innerHTML = "";
     request.onreadystatechange = function() {
       if (this.readyState === 4 && this.status === 200) {
         let response = JSON.parse(this.responseText);
         for(var i = 0; i < response.list.item.length; i++){
-          newElement("div", JSON.stringify(response.list.item[i].name), "wrap");
+          searchArea.innerHTML+= JSON.stringify(response.list.item[i].name);
+          searchArea.innerHTML+="<br>";
         }
       }
     }
