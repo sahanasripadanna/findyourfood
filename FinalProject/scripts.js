@@ -2,17 +2,35 @@
 function searched(){
   var searchedWord = document.getElementById("searchTerm").value;
   alert(searchedWord);
- 
-    // create a new element 
-    var newElement = document.createElement("div"); 
-    // give it content 
-    var newContent = document.createTextNode("You searched'" + searchedWord+"'"); 
-    // add the text node to the new element
-    newDiv.appendChild(newContent);  
-    // add the new element into the dom by linking to a prior non
-    var priorSection = document.getElementById("wrap"); 
-    document.body.insertBefore(newDiv, priorSection); 
+   newElement("div", "You searched for '" + searchedWord +"'", "wrap");
+    let request = new XMLHttpRequest();
+    alert("successfully created new object");
+    let url = "https://api.nal.usda.gov/ndb/search/?format=json";
+    url+=("&q="+searchedWord);
+    url+=("&sort=n&fg=Fast+Foods&api_key=FWaQH04Azwkd2GABmQTRrox5VMNSkhJrHfYpgxMG");
+    request.onreadystatechange = function() {
+      if (this.readyState === 4 && this.status === 200) {
+        let response = JSON.parse(this.responseText);
+        for(var i = 0; i < response.list.item.length; i++){
+          newElement("div", JSON.stringify(response.list.item[i].name), "wrap");
+        }
+      }
+    }
+    request.open("GET", url, true);
+    request.send();
+    alert("request has been made");
+    alert("parsed the object");
+    alert("wrote to the document");
 }
+
+newElement = function(element, elText, prior){
+  var newEl = document.createElement(element);   
+  var newContent = document.createTextNode(elText); 
+  var priorSection = document.getElementById(prior); 
+  newEl.appendChild(newContent); 
+  document.body.insertBefore(newEl, priorSection);
+}
+
 
 /**EXPLANATION OF WHAT I DID HERE
  * 1) HTML CALLS THE JAVASCRIPT WHEN THE BUTTON IS CLICKED
@@ -21,34 +39,3 @@ function searched(){
  * 3) WE ADD A NEW NODE(LINKED LIST)USING A REFERENCE TO PRIOR
  */
 
-
-
-
-
-
-
-
-
-
-
-//open new connection, using GET request on URL endpoint
-
-/**var url = "https://developers.zomato.com/api/v2.1/restaurant?res_id=RESID";
-request.open('GET', url, true);
-request.send();
-var received = JSON.parse(this.response);
-{Need to then access price}
-**/
-/*** 
-request.onload = function (){
-// begin accessing json data here
-  var data = JSON.parse(this.response);
-
-  data.forEach(movie => {
-    //log each title
-    console.log(movie.title);
-  });
-}
-
-// send request
-request.send();**/
