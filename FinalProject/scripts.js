@@ -19,10 +19,11 @@ function searched(){
       //when the API server is ready, receive and add the elements to the page
       if (this.readyState === 4 && this.status === 200) {
         let response = JSON.parse(this.responseText);
-        
+
         for(var i = 0; i < response.list.item.length; i++){
           searchArea.innerHTML+= JSON.stringify(response.list.item[i].name);
           searchArea.innerHTML+="<br>";
+          searchArea.style.color = "magenta";
         }
       }
     }
@@ -33,7 +34,7 @@ function searched(){
 }
 
 
-//creates an
+//creates an element
 newElement = function(element, elText, prior){
   var newEl = document.createElement(element);   
   var newContent = document.createTextNode(elText); 
