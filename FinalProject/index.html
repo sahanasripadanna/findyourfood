@@ -2,19 +2,22 @@
 
 <html lang="en">
 <head>
+  
+  <!--Links to Stylesheets for CSS and configures for browser and window support-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--Name of Page to appear on tab-->
   <title>Find Your Food</title>
   <link rel="stylesheet" href="styles.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
 </head>
 <body>
-  
   <header>
  <h1 id = "mainpiece">Find  Your Food</h1>
  </header>
+
+ <!--Navigation menu-->
   <nav class = "navbar">
     <ul>
       <li class = "selected"><a href = "" >Home</a></li>
@@ -22,9 +25,11 @@
       <li><a href = "about.html">About</a></li>     
     </ul>
    </nav>
+
+   <!--icon to visually enhance page-->
       <img src = "download.png" alt = "food clipArt" class = "icon">
       
-
+  <!--Creates search bar-->
   <section class="wrap">
     <form id="search" name = "searchBar">
        <input type="text" id="searchTerm" placeholder="Search for your food">
@@ -32,9 +37,13 @@
       </button>
     </form>
   </section>
-  <section id= "results">
-    
+
+  <!---Creates area for results which wll be manipulated by the javascript file-->
+  <section id= "results">   
   </section>
+
+  <!--link to the processing javascript-->
   <script src="scripts.js"></script> 
+
 </body>
 </html>

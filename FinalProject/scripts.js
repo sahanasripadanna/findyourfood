@@ -1,31 +1,40 @@
-
+//function called if button is clicked
 function searched(){
+
+  //points a reference to the element in the search
   var searchedWord = document.getElementById("searchTerm").value;
-  alert(searchedWord);
-   newElement("div", "You searched for '" + searchedWord +"'", "wrap");
+  newElement("div", "You searched for '" + searchedWord +"'", "wrap");
+ 
+  //processing the API through a request
     let request = new XMLHttpRequest();
-    alert("successfully created new object");
     let url = "https://api.nal.usda.gov/ndb/search/?format=json";
     url+=("&q="+searchedWord);
     url+=("&sort=n&fg=Fast+Foods&api_key=FWaQH04Azwkd2GABmQTRrox5VMNSkhJrHfYpgxMG");
     var searchArea = document.getElementById("results");
     searchArea.innerHTML = "";
+
+    //event listener
     request.onreadystatechange = function() {
+
+      //when the API server is ready, receive and add the elements to the page
       if (this.readyState === 4 && this.status === 200) {
         let response = JSON.parse(this.responseText);
+
         for(var i = 0; i < response.list.item.length; i++){
           searchArea.innerHTML+= JSON.stringify(response.list.item[i].name);
           searchArea.innerHTML+="<br>";
+          searchArea.style.color = "magenta";
         }
       }
     }
+
+    //sends and creates the request
     request.open("GET", url, true);
     request.send();
-    alert("request has been made");
-    alert("parsed the object");
-    alert("wrote to the document");
 }
 
+
+//creates an element
 newElement = function(element, elText, prior){
   var newEl = document.createElement(element);   
   var newContent = document.createTextNode(elText); 
@@ -41,4 +50,3 @@ newElement = function(element, elText, prior){
  * 2) WE GET THE VAUE FROM THE ELEMENT NODE(JUST LIKE LINKED LIST)
  * 3) WE ADD A NEW NODE(LINKED LIST)USING A REFERENCE TO PRIOR
  */
-
