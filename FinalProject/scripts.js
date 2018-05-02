@@ -4,7 +4,6 @@ function searched(){
   alert(searchedWord);
    newElement("div", "You searched for '" + searchedWord +"'", "wrap");
     let request = new XMLHttpRequest();
-    alert("successfully created new object");
     let url = "https://api.nal.usda.gov/ndb/search/?format=json";
     url+=("&q="+searchedWord);
     url+=("&sort=n&fg=Fast+Foods&api_key=FWaQH04Azwkd2GABmQTRrox5VMNSkhJrHfYpgxMG");
@@ -21,9 +20,6 @@ function searched(){
     }
     request.open("GET", url, true);
     request.send();
-    alert("request has been made");
-    alert("parsed the object");
-    alert("wrote to the document");
 }
 
 newElement = function(element, elText, prior){
