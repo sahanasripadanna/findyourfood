@@ -26,7 +26,7 @@
 .navbar li a {
   text-decoration:none;
   color: lightgray;
-  font-family: "Calibri";
+  font-family: "Calibri", "Lucida Grande";
     font-style: bold;
     font-size: 20px;
 }
@@ -42,11 +42,11 @@
 
 /**image**/
 .icon{
-  display: flex;
-  margin: auto;
- align-content:  center;
-  padding-top: 4em;
-  padding-bottom: 4em;
+  display: block;
+ padding-top: 3em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%
 }
 
 .icon:hover{
@@ -55,49 +55,57 @@
 }
 
 /**Search form**/
-.form{
-  display: flex;
-} 
-#foodRequest{
-  margin-left: 25%;
- margin-right: 25%;
- width: 50%;
-}
-  #foodRequest,
-#foodRequest input[type = "text"]{
-  position: absolute;
-      border-radius: 8px;
-    border-style: none;
-      box-sizing: border-box;
-      padding: 6px;
-  display: block;
-     font-family: "Calibri";
-    font-size: 16px;  background-color: #eeeeee;
+.pageBody{
+  box-sizing: border-box;
   
-}  
-#foodRequest input[type = "text"]{
-   padding: 10px;
-  text-align : left;
-  width: 93%;
-   }
-button{
-  background-color: #eeeeee;
-  border: none;
-  display: inline;
-  border-radius: 8px;
- box-sizing: border-box;
-   margin-left: 94%;
-  margin-right: 0;
 }
-.material-icons.md-16{
-  font-size: 24px;
-  padding-top: 8px;
- color: grey;
- 
+#search {
+  width: 100%;
+  position: relative
 }
 
-/***elements of page**/
-p{
+#searchTerm {
+  float: left;
+  width: 100%;
+  border: none;
+  background-color: #eee;
+  padding: 5px;
+  height: 30px;
+  border-radius: 8px;
+  outline: none;
+  color:gray;
+  font-size: 16px;
+  font-family: Calibri, Arial, Helvetica, sans-serif;
+}
+
+#searchButton {
+  position: absolute;  
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #eee;
+  text-align: center;
+  color:gray;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+
+.wrap{
+  width: 45%;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/***about page**/
+
+#aboutText{
   font-family: Calibri, Helvetica, Arial;
   font-size: 16px;
+  margin: 0 25%;
+  color: grey;
 }
