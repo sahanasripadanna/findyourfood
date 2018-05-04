@@ -43,7 +43,7 @@
 /**image**/
 .icon{
   display: block;
- padding-top: 3em;
+ padding: 3em;
   margin-left: auto;
   margin-right: auto;
   width: 20%
@@ -55,13 +55,9 @@
 }
 
 /**Search form**/
-.pageBody{
-  box-sizing: border-box;
-  
-}
 #search {
   width: 100%;
-  position: relative
+  
 }
 
 #searchTerm {
@@ -80,7 +76,7 @@
 
 #searchButton {
   position: absolute;  
-  right: 10px;
+  right: 30%;
   width: 40px;
   height: 40px;
   border: none;
@@ -93,12 +89,21 @@
 }
 
 
-.wrap{
+#wrap{
   width: 45%;
-  position: absolute;
+  margin-left:25%;
   top: 65%;
   left: 50%;
-  transform: translate(-50%, -50%);
+}
+
+
+
+/***default for paragraphs****/
+p{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 16px;
+  margin: 0 25%;
+  color: purple;
 }
 
 /***about page**/
