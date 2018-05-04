@@ -29,14 +29,14 @@ function searched(){
           currElement.style.height = "200px";
           currElement.style.backgroundColor = "#d41274";
           currElement.style.float = "left";
-          currElement.style.width = "50%";
+          currElement.style.width = "49%";
+          currElement.style.color = "white";
+
           if((i%2)===1){
-            currElement.style.color = "white";
+            currElement.style.marginLeft = "10px";
             
           }else {
-            currElement.style.color = "green";
             
-          
 
           }
         }
