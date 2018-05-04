@@ -4,33 +4,39 @@ function searched(){
   //points a reference to the element in the search
   var searchedWord = document.getElementById("searchTerm").value;
   document.getElementById("searchTerm").value ="";
-  newElement("p", "You searched for '" + searchedWord +"'", "wrap", 'result');
+  newElement("p", "You searched for '" + searchedWord +"'", 'result');
+
+  document.getElementById("query-1").innerHTML = "";
  
   //processing the API through a request
     let request = new XMLHttpRequest();
     let url = "https://api.nal.usda.gov/ndb/search/?format=json";
     url+=("&q="+searchedWord);
     url+=("&sort=n&fg=Fast+Foods&api_key=FWaQH04Azwkd2GABmQTRrox5VMNSkhJrHfYpgxMG");
-    var searchArea = document.getElementById('query-1');
-    searchArea.innerHTML = "";
+  
 
     //event listener
     request.onreadystatechange = function() {
-
+      document.getElementById("query-1").innerHTML = "";
       //when the API server is ready, receive and add the elements to the page
       if (this.readyState === 4 && this.status === 200) {
         let response = JSON.parse(this.responseText);
 
         for(var i = 0; i < response.list.item.length; i++){
           //alert(JSON.stringify(response.list.item[i].name));
-          newElement("p", JSON.stringify(response.list.item[i].name), 'query'+i-1, 'query'+i);
+          newElement("p", JSON.stringify(response.list.item[i].name),'query'+i);
           var currElement = document.getElementById('query'+i);
           currElement.style.height = "200px";
-          currElement.style.backgroundColor = "purple";
+          currElement.style.backgroundColor = "#d41274";
+          currElement.style.float = "left";
+          currElement.style.width = "50%";
           if((i%2)===1){
             currElement.style.color = "white";
+            
           }else {
             currElement.style.color = "green";
+            
+          
 
           }
         }
@@ -43,12 +49,12 @@ function searched(){
 }
 
 //creates an element
-newElement = function(element, elText, prior, thisname){
+newElement = function(element, elText, thisname){
   var newEl = document.createElement(element);   
   var newContent = document.createTextNode(elText); 
-  var priorSection = document.getElementById(prior); 
   newEl.appendChild(newContent);
-  document.body.insertBefore(newEl, priorSection);
+  var searches = document.getElementById('searches');
+  searches.appendChild(newEl);
   newEl.id = thisname;
 }
 
