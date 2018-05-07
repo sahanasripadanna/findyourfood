@@ -6,23 +6,31 @@ function searched(){
   document.getElementById("searchTerm").value ="";
   newElement("p", "You searched for '" + searchedWord +"'", 'result', 'query-1');
   
+  //uses a function to recieve search data from 2 diiferent sources in API
 let x = getResults("Fast+Foods", searchedWord, 0); 
-alert(x);
   getResults("Restaurant+Foods", searchedWord, x);
 }
 
 //creates an element
+//@param: element - type of element
+//elText - value of element/ thisname - name of element/ parentElement - parent reference
 newElement = function(element, elText,thisname, parentElement){
+
+  //points to new node
   var newEl = document.createElement(element);   
+  //creates a value
   var newContent = document.createTextNode(elText); 
+  //sets node's value to newContent
   newEl.appendChild(newContent);
   var parent = document.getElementById(parentElement);
+  //sets a reference from the parent element to the new element(so it become a part of webpage)
   parent.appendChild(newEl);
+  //sets the names
   newEl.id = thisname;
   return parent.childElementCount;
 }
 
-
+//gathers the data from the api and adds it to the page
 getResults = function(foodType, searchedFood, queryStart){
     let j = queryStart;
     var count = 0;
@@ -40,28 +48,30 @@ getResults = function(foodType, searchedFood, queryStart){
             count = newElement("p", JSON.stringify(response.list.item[i].name),'query'+j, 'query-1');
             var currElement = document.getElementById('query'+j);
             j++;
+
+            //styling the page through javascript
             currElement.style.height = "175px";
             currElement.style.paddingTop = "12px";
             currElement.style.backgroundColor = "#d41274";
             currElement.style.float = "left";
             currElement.style.width = "49%";
             currElement.style.color = "white";
-
+            //add a button to the search query that can be clicked and create a popup
             currElement.innerHTML+="<br>";
             currElement.innerHTML+='<button type="submit" onclick = "dialog(); return false;"><i class="fa fa-plus-square-o"></i></button>';
-
             
-
+            //adds the background picture(*Not working right now)
             addpicture(currElement, currElement.value);
+
+            //spacing between the elements
             if((i%2)===1){
               currElement.style.marginLeft = "10px";
             }
           }
+          //integer value returned which can prevent overwriting elements
           return count;
-          alert(x + "babies");
         }
        
-        
       }
       //sends and creates the request
       request.open("GET", url, true);
@@ -69,6 +79,7 @@ getResults = function(foodType, searchedFood, queryStart){
   }
 
 
+//function to add a picture from another API
 addpicture = function(currElement, imageOf){
   let request = new XMLHttpRequest();
     let url = "https://api.gettyimages.com/v3/search/images?phrase=" + imageOf;
@@ -91,18 +102,14 @@ addpicture = function(currElement, imageOf){
 
 }
 
+//temporary methods for button click and response
 dialog = function(){
   alert("We will bring information to you");
   var modal = document.getElementById('popUp');
   modal.style.display = "block";
 }
+//popup page
 close = function(){
   var modal = document.getElementById('popUP');
   modal.style.display = "none";
 }
-/**EXPLANATION OF WHAT I DID HERE
- * 1) HTML CALLS THE JAVASCRIPT WHEN THE BUTTON IS CLICKED
- * (THE USUAL PROBELM WAS THAT MY FORM WOULD SUBMIT AND REFRESH SO WE RETURN FALSE IN THE HTML)
- * 2) WE GET THE VAUE FROM THE ELEMENT NODE(JUST LIKE LINKED LIST)
- * 3) WE ADD A NEW NODE(LINKED LIST)USING A REFERENCE TO PRIOR
- */
