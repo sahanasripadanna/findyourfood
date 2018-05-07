@@ -13,19 +13,19 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+  
   <header>
- <h1 id = "mainpiece">find  your food</h1>
- </header>
+     <h1 id = "mainpiece">find  your food</h1>
 
  <!--Navigation menu-->
-  <nav class = "navbar">
+ <nav class = "navbar">
     <ul>
       <li class = "selected"><a href = "" >Home</a></li>
       <li><a href = "restaurants.html">Restaurants</a></li>
       <li><a href = "about.html">About</a></li>     
     </ul>
    </nav>
-
+  </header>
    <!--icon to visually enhance page-->
       <img src = "download.png" alt = "food clipArt" class = "icon">
       
@@ -43,6 +43,19 @@
   <section id = "searches">
   <aside id= "query-1">   
   </aside>
+
+
+  <!-- The Modal -->
+<div id="popUp" class="popWindow" >
+
+    <!-- Modal content -->
+    <div class="popText">
+      <span class="close" onclick = "close(); return false;">&times;</span>
+      <p>Stuff about food!</p>
+    </div>
+  
+  </div>
+
 
   <!--link to the processing javascript-->
   <script src="scripts.js"></script> 
