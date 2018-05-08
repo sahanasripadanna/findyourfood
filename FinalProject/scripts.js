@@ -3,12 +3,14 @@ function searched(){
   document.getElementById("query-1").innerHTML = "";
   //points a reference to the element in the search
   var searchedWord = document.getElementById("searchTerm").value;
-  document.getElementById("searchTerm").value ="";
-  newElement("p", "You searched for '" + searchedWord +"'", 'result', 'query-1');
-  
-  //uses a function to recieve search data from 2 diiferent sources in API
-let x = getResults("Fast+Foods", searchedWord, 0); 
-  getResults("Restaurant+Foods", searchedWord, x);
+  if ((searchedWord !== "") && (searchedWord !== " ")){
+    document.getElementById("searchTerm").value ="";
+    newElement("p", "You searched for '" + searchedWord +"'", 'result', 'query-1');
+
+  //uses a function to recieve search data from 2 different sources in API
+  let x = getResults("Fast+Foods", searchedWord, 0);
+    getResults("Restaurant+Foods", searchedWord, x);
+  }
 }
 
 //creates an element
@@ -17,9 +19,9 @@ let x = getResults("Fast+Foods", searchedWord, 0);
 newElement = function(element, elText,thisname, parentElement){
 
   //points to new node
-  var newEl = document.createElement(element);   
+  var newEl = document.createElement(element);
   //creates a value
-  var newContent = document.createTextNode(elText); 
+  var newContent = document.createTextNode(elText);
   //sets node's value to newContent
   newEl.appendChild(newContent);
   var parent = document.getElementById(parentElement);
@@ -59,7 +61,7 @@ getResults = function(foodType, searchedFood, queryStart){
             //add a button to the search query that can be clicked and create a popup
             currElement.innerHTML+="<br>";
             currElement.innerHTML+='<button type="submit" onclick = "dialog(); return false;"><i class="fa fa-plus-square-o"></i></button>';
-            
+
             //adds the background picture(*Not working right now)
             addpicture(currElement, currElement.value);
 
@@ -68,10 +70,11 @@ getResults = function(foodType, searchedFood, queryStart){
               currElement.style.marginLeft = "10px";
             }
           }
+
           //integer value returned which can prevent overwriting elements
           return count;
         }
-       
+
       }
       //sends and creates the request
       request.open("GET", url, true);
@@ -102,6 +105,10 @@ addpicture = function(currElement, imageOf){
 
 }
 
+noresults = function(){
+  alert("No results for this keyword");
+}
+
 //temporary methods for button click and response
 dialog = function(){
   alert("We will bring information to you");
@@ -110,6 +117,6 @@ dialog = function(){
 }
 //popup page
 close = function(){
-  var modal = document.getElementById('popUP');
+  var modal = document.getElementById('popUp');
   modal.style.display = "none";
 }
