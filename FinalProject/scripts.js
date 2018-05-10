@@ -2,15 +2,15 @@
 function searched(){
   document.getElementById("query-1").innerHTML = "";
   //points a reference to the element in the search
-  var searchedWord = document.getElementById("searchTerm").value;
-  if ((searchedWord !== "") && (searchedWord !== " ")){
+  var str searchedWord = document.getElementById("searchTerm").value;
+  //if ((!(searchedWord.equals(""))) && (!(searchedWord.equals(" ")))){
     document.getElementById("searchTerm").value ="";
     newElement("p", "You searched for '" + searchedWord +"'", 'result', 'query-1');
 
-  //uses a function to recieve search data from 2 different sources in API
+  //uses a function to receive search data from 2 different sources in API
   let x = getResults("Fast+Foods", searchedWord, 0);
     getResults("Restaurant+Foods", searchedWord, x);
-  }
+  //}
 }
 
 //creates an element
