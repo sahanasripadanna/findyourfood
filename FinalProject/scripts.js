@@ -118,7 +118,8 @@ dialog = function(){
   modal.style.display = "block";
 }
 //popup page
-close = function(){
+function exit(){
+  
   var modal = document.getElementById('popUp');
   modal.style.display = "none";
 }
