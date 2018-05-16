@@ -3,7 +3,7 @@ function searched(){
   document.getElementById("query-1").innerHTML = "";
   //points a reference to the element in the search
   var searchedWord = document.getElementById("searchTerm").value;
-  if ((searchedWord !== "") && (searchedWord !== " ")){
+  //if (!((searchedWord.equals("")) || (searchedWord.equals(" ")))){
     document.getElementById("searchTerm").value ="";
     newElement("p", "You searched for '" + searchedWord +"'", 'result', 'query-1');
 
@@ -11,7 +11,7 @@ function searched(){
   let x = getResults("Fast+Foods", searchedWord, 0);
     getResults("Restaurant+Foods", searchedWord, x);
   }
-}
+//}
 
 //creates an element
 //@param: element - type of element
@@ -54,7 +54,7 @@ getResults = function(foodType, searchedFood, queryStart){
             //styling the page through javascript
             currElement.style.height = "175px";
             currElement.style.paddingTop = "12px";
-            currElement.style.backgroundColor = "#d41274";
+            currElement.style.backgroundColor = "rgb(212,18,116)";
             currElement.style.float = "left";
             currElement.style.width = "49%";
             currElement.style.color = "white";
@@ -63,7 +63,8 @@ getResults = function(foodType, searchedFood, queryStart){
             currElement.innerHTML+='<button type="submit" onclick = "dialog(); return false;"><i class="fa fa-plus-square-o"></i></button>';
 
             //adds the background picture(*Not working right now)
-            addpicture(currElement, currElement.value);
+            
+            addpicture(currElement, currElement.innerText);
 
             //spacing between the elements
             if((i%2)===1){
@@ -85,22 +86,23 @@ getResults = function(foodType, searchedFood, queryStart){
 //function to add a picture from another API
 addpicture = function(currElement, imageOf){
   let request = new XMLHttpRequest();
-    let url = "https://api.gettyimages.com/v3/search/images?phrase=" + imageOf;
+    let url = "https://api.pexels.com/v1/search?query=" + imageOf;
     //url.setRequestHeader("Api-Key", "n2tn9kth8q24t8n2rbzvrhe3");
-
     //event listener
     request.onreadystatechange = function() {
       //when the API server is ready, receive and add the elements to the page
       if (this.readyState === 4 && this.status === 200) {
         let response = JSON.parse(this.responseText);
         if(response !== null){
-        var picLink = response.images[0]; //.display_size[0].uri
-        currElement.style.addPictureBackground = picLink;
+        var picLink = response.photos[0];
+        
+        //alert(picLink);
+        currElement.style.addPictureBackground = "" + picLink + "";
         }
       }
     }
       request.open("GET", url, true);
-      request.setRequestHeader("Api-Key", "n2tn9kth8q24t8n2rbzvrhe3");
+      request.setRequestHeader("Authorization", "563492ad6f91700001000001aa4975ce99044329a0e05f0d2f5b3cd0");
       request.send();
 
 }
