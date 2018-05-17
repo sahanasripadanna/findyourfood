@@ -60,11 +60,11 @@ getResults = function(foodType, searchedFood, queryStart){
             currElement.style.color = "white";
             //add a button to the search query that can be clicked and create a popup
             currElement.innerHTML+="<br>";
-            currElement.innerHTML+='<button type="submit" onclick = "dialog(); return false;"><i class="fa fa-plus-square-o"></i></button>';
+            currElement.innerHTML+='<button type="submit" onclick = "dialog(); return false;" class = "magentabtn"><i class="fa fa-plus-square-o"></i></button>';
 
             //adds the background picture(*Not working right now)
             
-            addpicture(currElement, currElement.innerText);
+            //addpicture(currElement, currElement.innerText);
 
             //spacing between the elements
             if((i%2)===1){
@@ -87,7 +87,7 @@ getResults = function(foodType, searchedFood, queryStart){
 addpicture = function(currElement, imageOf){
   let request = new XMLHttpRequest();
     let url = "https://api.pexels.com/v1/search?query=" + imageOf;
-    //url.setRequestHeader("Api-Key", "n2tn9kth8q24t8n2rbzvrhe3");
+    
     //event listener
     request.onreadystatechange = function() {
       //when the API server is ready, receive and add the elements to the page
@@ -102,7 +102,8 @@ addpicture = function(currElement, imageOf){
       }
     }
       request.open("GET", url, true);
-      request.setRequestHeader("Authorization", "563492ad6f91700001000001aa4975ce99044329a0e05f0d2f5b3cd0");
+      url.setRequestHeader("Api-Key", "n2tn9kth8q24t8n2rbzvrhe3");
+      //request.setRequestHeader("Authorization", "563492ad6f91700001000001aa4975ce99044329a0e05f0d2f5b3cd0");
       request.send();
 
 }
@@ -119,7 +120,6 @@ dialog = function(){
 }
 //popup page
 function exit(){
-  
   var modal = document.getElementById('popUp');
   modal.style.display = "none";
 }

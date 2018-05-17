@@ -112,7 +112,12 @@
   margin-left: 25%;
   margin-right: 30%;
 }
-
+.magentabtn{
+  background: rgb(212,18,116);
+  border: none;
+  color: white;
+ font-size: 24px;
+}
 /**popup page**/
 .popWindow {
   display: none; /* Hidden by default */
@@ -131,10 +136,17 @@
 .popText{
   background-color: #fefefe;
   margin: 15% auto; 
-  padding: 20px;
+
   border: 1px solid #888;
   width: 80%; 
 }
+
+#banner{
+  height: 75px;
+  background: rgb(212,18,116);
+}
+
+
 
 /* The close Button */
 .close {
