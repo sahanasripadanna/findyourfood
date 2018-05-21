@@ -125,9 +125,6 @@
   padding: 10px;
 }
 
-
-
- 
 /**popup page**/
 .popWindow {
   display: none; /* Hidden by default */
@@ -142,11 +139,9 @@
   background-color: rgba(0,0,0,0.4); 
 }
 
-
 .popText{
   background-color: #fefefe;
   margin: 15% auto; 
-
   border: 1px solid #888;
   width: 80%; 
 }
@@ -155,8 +150,6 @@
   height: 75px;
   background: rgb(212,18,116);
 }
-
-
 
 /* The close Button */
 .close {

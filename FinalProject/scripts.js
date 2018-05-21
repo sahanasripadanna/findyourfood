@@ -125,3 +125,15 @@ function exit(){
   var modal = document.getElementById('popUp');
   modal.style.display = "none";
 }
+
+
+/**importing zomato api
+ * 
+ * request = xmlhttprequest();
+ * variabel for url + a term what we search
+ * request.setRequestHeader("user-key", "636ff0696f4447eb2883983f4b03060a");
+ *  request.onreadystatechange = function() 
+ * []
+ *  if (this.readyState === 4 && this.status === 200) {
+ * 
+ */
