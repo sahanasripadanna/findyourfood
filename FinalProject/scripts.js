@@ -86,13 +86,14 @@ noresults = function(){
 
 //temporary methods for button click and response
 dialog = function(){
-  //var insideText = this.ParentElement.innerText;
+ 
   var modal = document.getElementById('popUp');
   modal.style.display = "block";
-  postToPopUp('applebees');
+  postToPopUp("subway");
 } 
 //popup page
 function exit(){
+  
   var modal = document.getElementById('popUp');
   modal.style.display = "none";
 }
@@ -102,21 +103,17 @@ function postToPopUp(keyWord){
   let url = "https://api.foursquare.com/v2/venues/search/?intent=global&query=";
   url+=keyWord;
   url+="&limit=1&client_id=NBVZZZSD5QBEA2SWONO22JHPQ3YUDJAHT3N4U4JYUSDSP0D3&client_secret=KP5HBRJX2Z3R3FJFJSMFT0SEGBN4TFRCZETYLKANOL5UMLCF&v=20180522";
-
-  //https://api.foursquare.com/v2/venues/search?ll=40.7,-74&client_id=CLIENT_ID&client_secret=CLIENT_SECRET&v=YYYYMMDD
-  
   request.onreadystatechange = function() {
     //when the API server is ready, receive and add the elements to the page
     if (request.readyState === 4 && request.status === 200) {
       let response = JSON.parse(request.responseText);
-      alert(JSON.stringify(response));
       let placeId = JSON.stringify(response.response.venues[0].id);
       alert(placeId);
     }
   }
-
       request.open("GET", url, true);
       request.send();
    
+  
   
 }
