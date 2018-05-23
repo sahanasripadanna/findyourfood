@@ -1,8 +1,11 @@
+var searchTerm;
 //function called if button is clicked
 function searched(){
   document.getElementById("query-1").innerHTML = "";
+
   //points a reference to the element in the search
   var searchedWord = document.getElementById("searchTerm").value;
+  searchTerm = searchedWord;
   //if (!((searchedWord.equals("")) || (searchedWord.equals(" ")))){
     document.getElementById("searchTerm").value ="";
     newElement("p", "You searched for '" + searchedWord +"'", 'result', 'query-1');
@@ -44,13 +47,11 @@ getResults = function(foodType, searchedFood, queryStart){
         //when the API server is ready, receive and add the elements to the page
         if (this.readyState === 4 && this.status === 200) {
           let response = JSON.parse(this.responseText);
-          
           for(var i = 0; i < JSON.stringify(response.list.item.length); i++){
             //alert(JSON.stringify(response.list.item[i].name));
             newElement("p", JSON.stringify(response.list.item[i].name),'query'+j, 'query-1');
             var currElement = document.getElementById('query'+j);
             j++;
-
             //styling the page through javascript
             currElement.style.height = "175px";
             currElement.style.paddingTop = "12px";
@@ -61,20 +62,12 @@ getResults = function(foodType, searchedFood, queryStart){
             //add a button to the search query that can be clicked and create a popup
             currElement.innerHTML+="<br>";
             currElement.innerHTML+='<button type="submit" onclick = "dialog(); return false;" class = "magentabtn"><i class="fa fa-plus-square-o"></i></button>';
-
-            //adds the background picture(*Not working right now)
-            
-            //addpicture(currElement, currElement.innerText);
-
             //spacing between the elements
             if((i%2)===1){
               currElement.style.marginLeft = "10px";
             }
           }
-
-          //integer value returned which can prevent overwriting elements
-          
-         
+        
         }
 
       }
@@ -86,30 +79,6 @@ getResults = function(foodType, searchedFood, queryStart){
   }
 
 
-//function to add a picture from another API
-addpicture = function(currElement, imageOf){
-  let request = new XMLHttpRequest();
-    let url = "https://api.pexels.com/v1/search?query=" + imageOf;
-    
-    //event listener
-    request.onreadystatechange = function() {
-      //when the API server is ready, receive and add the elements to the page
-      if (this.readyState === 4 && this.status === 200) {
-        let response = JSON.parse(this.responseText);
-        if(response !== null){
-        var picLink = response.photos[0];
-        
-        //alert(picLink);
-        currElement.style.addPictureBackground = "" + picLink + "";
-        }
-      }
-    }
-      request.open("GET", url, true);
-      url.setRequestHeader("Api-Key", "n2tn9kth8q24t8n2rbzvrhe3");
-      //request.setRequestHeader("Authorization", "563492ad6f91700001000001aa4975ce99044329a0e05f0d2f5b3cd0");
-      request.send();
-
-}
 
 noresults = function(){
   alert("No results for this keyword");
@@ -117,8 +86,10 @@ noresults = function(){
 
 //temporary methods for button click and response
 dialog = function(){
+  //var insideText = this.ParentElement.innerText;
   var modal = document.getElementById('popUp');
   modal.style.display = "block";
+  postToPopUp('applebees');
 } 
 //popup page
 function exit(){
@@ -126,14 +97,26 @@ function exit(){
   modal.style.display = "none";
 }
 
+function postToPopUp(keyWord){
+  let request = new XMLHttpRequest();
+  let url = "https://api.foursquare.com/v2/venues/search/?intent=global&query=";
+  url+=keyWord;
+  url+="&limit=1&client_id=NBVZZZSD5QBEA2SWONO22JHPQ3YUDJAHT3N4U4JYUSDSP0D3&client_secret=KP5HBRJX2Z3R3FJFJSMFT0SEGBN4TFRCZETYLKANOL5UMLCF&v=20180522";
 
-/**importing zomato api
- * 
- * request = xmlhttprequest();
- * variabel for url + a term what we search
- * request.setRequestHeader("user-key", "636ff0696f4447eb2883983f4b03060a");
- *  request.onreadystatechange = function() 
- * []
- *  if (this.readyState === 4 && this.status === 200) {
- * 
- */
+  //https://api.foursquare.com/v2/venues/search?ll=40.7,-74&client_id=CLIENT_ID&client_secret=CLIENT_SECRET&v=YYYYMMDD
+  
+  request.onreadystatechange = function() {
+    //when the API server is ready, receive and add the elements to the page
+    if (request.readyState === 4 && request.status === 200) {
+      let response = JSON.parse(request.responseText);
+      alert(JSON.stringify(response));
+      let placeId = JSON.stringify(response.response.venues[0].id);
+      alert(placeId);
+    }
+  }
+
+      request.open("GET", url, true);
+      request.send();
+   
+  
+}
