@@ -17,7 +17,7 @@
   <header>
      <h1 id = "mainpiece">find  your food</h1>
 
- <!--Navigation menu-->
+ <!--Navigation menu and links-->
  <nav class = "navbar">
     <ul>
       <li class = "selected"><a href = "" >Home</a></li>
@@ -31,7 +31,7 @@
    <!--icon to visually enhance page-->
       <img src = "download.png" alt = "food clipArt" class = "icon">
       
-  <!--Creates search bar-->
+  <!--Creates search bar and search buttn-->
   <section id="wrap">
     <form id="search" name = "searchBar">
        <input type="text" id="searchTerm" placeholder="Search for your food">
@@ -39,13 +39,10 @@
       </button>
     </form>
 <br><br>
-
-
   </section>
 
   <!---Creates area for results which wll be manipulated by the javascript file-->
   <section id = "searches">
-
   <aside id= "query-1">
 
     <!--information text on how to use-->
@@ -61,12 +58,13 @@
   <!-- The Modal -->
 <div id="popUp" class="popWindow" >
 
-    <!-- Modal content -->
+    <!-- popup content -->
     <div class="popText">
+      <!-- closing button -->
         <button type = "submit" class="close" onclick = "exit(); return false;">&times;</button>
         <section id = "banner"></section>
-      
-      <p>Stuff about food!</p>
+      <!--information about the food and the restaurant-->
+      <p id = "innerText">Stuff about food!</p>
     </div>
 
   </div>

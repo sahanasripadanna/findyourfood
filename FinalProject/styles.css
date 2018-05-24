@@ -13,6 +13,10 @@
   font-family: Pacifico;
   src: url(Pacifico.ttf);
 }
+@font-face{
+  font-family: cAndL;
+  src: url(candL.ttf);
+}
 
  /***class and ID selectors for various parts of the page*/
 
@@ -111,7 +115,7 @@
   top: 65%;
   left: 50%;
 }
-
+/**search results**/
 #searches{
   margin-left: 25%;
   margin-right: 30%;
@@ -147,8 +151,18 @@
 }
 
 #banner{
-  height: 75px;
+  height: 60px;
   background: rgb(212,18,116);
+  color: white;
+  font-family: Pacifico;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 12px;
+}
+#innerText{
+  font-family: cAndL;
+  color: gray;
+  font-size: 30px;
 }
 
 /* The close Button */
@@ -200,7 +214,7 @@ h3{
   font-size: 48px;
 }
 
-/***about page**/
+/**multicolumn layout**/
 #rows::after {
   content: "";
   clear: both;
