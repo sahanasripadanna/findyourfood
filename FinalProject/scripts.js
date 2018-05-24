@@ -61,7 +61,7 @@ getResults = function(foodType, searchedFood, queryStart){
             currElement.style.color = "white";
             //add a button to the search query that can be clicked and create a popup
             currElement.innerHTML+="<br>";
-            currElement.innerHTML+='<button type="submit" onclick = "dialog(); return false;" class = "magentabtn"><i class="fa fa-plus-square-o"></i></button>';
+            currElement.innerHTML+='<button type="submit" onclick = "dialog('+(j-1)+'); return false;" class = "magentabtn"><i class="fa fa-plus-square-o"></i></button>';
             //spacing between the elements
             if((i%2)===1){
               currElement.style.marginLeft = "10px";
@@ -85,11 +85,13 @@ noresults = function(){
 }
 
 //temporary methods for button click and response
-dialog = function(){
- 
+dialog = function(x){
+  var searchKey = document.getElementById('query' + x + '');
+  var term = searchKey.innerText;
   var modal = document.getElementById('popUp');
   modal.style.display = "block";
-  postToPopUp("subway");
+
+  postToPopUp(term);
 } 
 //popup page
 function exit(){
