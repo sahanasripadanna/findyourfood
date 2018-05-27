@@ -15,7 +15,7 @@
 }
 @font-face{
   font-family: cAndL;
-  src: url(candL.ttf);
+  src: url(cAndL.otf);
 }
 
  /***class and ID selectors for various parts of the page*/
@@ -162,7 +162,21 @@
 #innerText{
   font-family: cAndL;
   color: gray;
-  font-size: 30px;
+  font-size: 26px;
+  text-align: left;
+  margin-left: 1%;
+  
+  
+}
+
+.loc_info{
+  font: inherit;
+  font-size: 20px;
+  margin-left: 40%;
+  text-align: left;
+  color: slategrey;
+  font-weight: bold;
+  padding-left: 0;
 }
 
 /* The close Button */
