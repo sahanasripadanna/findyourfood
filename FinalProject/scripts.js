@@ -262,7 +262,7 @@ request.onreadystatechange = function() {
     imageSrc+= "/" + dataSet.id + "_" + dataSet.secret + "_n.jpg";
     //appending the image to the popup
     let thumbNail = document.getElementById("innerText");
-    thumbNail.innerHTML+='<img  style = "float : left; display : inline; margin-left: -1%; padding-right: 1%; width: 40%;" src ="' + imageSrc + '" alt = "foodPic"><br>';
+    thumbNail.innerHTML+='<img  style = "float : left; display : inline; margin-left: -1%; padding-right: 1%; width: 30%; height: 20%;" src ="' + imageSrc + '" alt = "foodPic"><br>';
     }
 }
 }
